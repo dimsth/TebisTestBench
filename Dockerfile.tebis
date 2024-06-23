@@ -1,0 +1,22 @@
+FROM ubuntu:20.04
+
+RUN apt-get update && apt-get install -y \
+    git \
+    build-essential \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get install -y openjdk-11-jdk && rm -rf /var/lib/apt/lists/*
+
+ARG GIT_REPO="https://https://github.com/CARV-ICS-FORTH/tebis"
+RUN git clone $GIT_REPO /usr/src/app
+WORKDIR /usr/src/app
+
+ARG GIT_BRANCH="master"
+RUN git checkout $GIT_BRANCH
+
+RUN mkdir build \
+    && cd build \
+    && cmake .. \
+    && make
+

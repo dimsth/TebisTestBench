@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tebis-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tebis
+  template:
+    metadata:
+      labels:
+        app: tebis
+    spec:
+      containers:
+      - name: tebis
+        image: tebis-image
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            mellanox.com/rdma_shared_device_a: "1"  # Assuming you are using the RDMA shared device plugin
