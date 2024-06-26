@@ -1,25 +1,37 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
-ENV DEBIAN_FRONTEND=noninteractive \
-    TZ=Europe/Athens
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Europe/Athens
 
-RUN apt-get update; apt-get install -y \
-    git \
+RUN apt-get update && apt-get install -y \
+    software-properties-common \
+    wget \
+    apt-transport-https \
+    gnupg \
     build-essential \
-    curl \
+    git
+
+RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | apt-key add - \
+    && apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main' \
+    && apt-get update
+
+RUN apt-get install -y \
     cmake \
-    openjdk-11-jdk \
-    tzdata; \
-    rm -rf /var/lib/apt/lists/*
+    libnuma-dev \
+    libibverbs-dev \
+    librdmacm-dev \
+    libzookeeper-mt-dev
 
-RUN apt-get update && apt-get install -y openjdk-11-jdk && rm -rf /var/lib/apt/lists/*
+COPY tebis/ /usr/src/tebis
 
-ARG GIT_REPO="https://github.com/CARV-ICS-FORTH/tebis"
-RUN git clone $GIT_REPO /usr/src/app
-WORKDIR /usr/src/app
+WORKDIR /usr/src/tebis
 
-ARG GIT_BRANCH="master"
-RUN git checkout $GIT_BRANCH
+# ARG GIT_REPO="https://github.com/CARV-ICS-FORTH/tebis"
+# RUN git clone $GIT_REPO /usr/src/app
+# WORKDIR /usr/src/app
+
+# ARG GIT_BRANCH="master"
+# RUN git checkout $GIT_BRANCH
 
 RUN mkdir build \
     && cd build \
