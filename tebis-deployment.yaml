@@ -18,4 +18,4 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            mellanox.com/rdma_shared_device_a: "1"  # Assuming you are using the RDMA shared device plugin
+            mellanox.com/rdma_shared_device_a: "1"
