@@ -22,15 +22,4 @@ RUN apt-get install -y \
     librdmacm-dev \
     libzookeeper-mt-dev
 
-ARG GIT_REPO="https://github.com/CARV-ICS-FORTH/tebis"
-RUN git clone $GIT_REPO /usr/src/app
-WORKDIR /usr/src/app
-
-ARG GIT_BRANCH="master"
-RUN git checkout $GIT_BRANCH
-
-RUN mkdir build \
-    && cd build \
-    && cmake .. \
-    && make
-
+CMD ["bash"]

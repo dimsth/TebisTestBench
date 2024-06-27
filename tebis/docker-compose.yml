@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  tebis-base:
+    build:
+      context: .
+      dockerfile: Dockerfile.base
+    image: tebis-base:latest
+
+  tebis-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    image: tebis-app:latest
+    depends_on:
+      - tebis-base
+    volumes:
+      - .:/usr/src/app
