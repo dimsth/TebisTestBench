@@ -20,6 +20,20 @@ RUN apt-get install -y \
     libnuma-dev \
     libibverbs-dev \
     librdmacm-dev \
-    libzookeeper-mt-dev
+    openjdk-8-jdk
+
+RUN apt-get install -y \
+    libcppunit-dev    
+
+RUN apt-get install -y \
+    maven \
+    pkg-config \
+    ant \
+    libboost-all-dev
+
+RUN apt-get install -y \
+    autoconf \
+    automake \
+    libtool 
 
 CMD ["bash"]
