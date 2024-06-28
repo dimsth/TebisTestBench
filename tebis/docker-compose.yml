@@ -6,12 +6,22 @@ services:
       dockerfile: Dockerfile.base
     image: tebis-base:latest
 
+  tebis-zookeeper:
+    build:
+      context: .
+      dockerfile: Dockerfile.zookeeper
+    image: tebis-zookeeper:latest
+    depends_on:
+      - tebis-base
+    volumes:
+      - .:/usr/src/app
+
   tebis-app:
     build:
       context: .
       dockerfile: Dockerfile.app
     image: tebis-app:latest
     depends_on:
-      - tebis-base
+      - tebis-zookeeper
     volumes:
       - .:/usr/src/app
