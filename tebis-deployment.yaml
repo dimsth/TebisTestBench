@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: tebis
-        image: tebis-image
+        image: dstath/tebis_test_bench:tebis-app
         imagePullPolicy: IfNotPresent
         resources:
           limits:

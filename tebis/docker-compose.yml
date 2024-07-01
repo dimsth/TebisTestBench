@@ -4,13 +4,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.base
-    image: tebis-base:latest
+    image: dstath/tebis_test_bench:tebis-base
 
   tebis-zookeeper:
     build:
       context: .
       dockerfile: Dockerfile.zookeeper
-    image: tebis-zookeeper:latest
+    image: dstath/tebis_test_bench:tebis-zookeeper
     depends_on:
       - tebis-base
     volumes:
@@ -20,7 +20,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.app
-    image: tebis-app:latest
+    image: dstath/tebis_test_bench:tebis-app
     depends_on:
       - tebis-zookeeper
     volumes:

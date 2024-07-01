@@ -14,15 +14,15 @@ spec:
     spec:
       containers:
       - name: zookeeper
-        image: zookeeper-image
-        imagePullPolicy: IfNotPresent
+        image: dstath/tebis_test_bench:zookeeper
+        imagePullPolicy: Always
         ports:
         - containerPort: 2181
         volumeMounts:
         - name: zookeeper-data
-          mountPath: /data
+          mountPath: "/home/dimos/Tebis/zookeeper/data"
         - name: zookeeper-datalog
-          mountPath: /datalog
+          mountPath: "/home/dimos/Tebis/zookeeper/datalog"
       volumes:
       - name: zookeeper-data
         persistentVolumeClaim:
