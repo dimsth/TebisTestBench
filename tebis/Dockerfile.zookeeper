@@ -1,4 +1,4 @@
-FROM tebis-base:latest
+FROM dstath/tebis_test_bench:tebis-base
 
 ENV ZOOKEEPER_VERSION=3.5.10
 
