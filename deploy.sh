@@ -29,6 +29,7 @@ echo "Deploying to Kubernetes..."
 if microk8s kubectl apply -f zookeeper-deployment.yaml \
    -f tebis-deployment.yaml \
    -f zookeeper-pvcs.yaml \
+   -f tebis-service.yaml \
    -f zookeeper-service.yaml; then
     echo "Deployment complete."
 else
