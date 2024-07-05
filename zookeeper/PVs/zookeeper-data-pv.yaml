@@ -11,4 +11,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/home/dimos/Tebis/zookeeper/data"
+    path: "/mnt/nvme/Tebis/zookeeper/data"
