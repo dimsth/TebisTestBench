@@ -23,7 +23,10 @@ RUN apt-get install -y \
     openjdk-8-jdk
 
 RUN apt-get install -y \
-    libcppunit-dev    
+    libcppunit-dev \
+    rdma-core \
+    perftest \
+    iproute2
 
 RUN apt-get install -y \
     maven \
